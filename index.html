@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FOOTY SCORES // EUROPE TOP 5</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323:wght@400&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="scanlines"></div>
+  <div class="crt-overlay"></div>
+
+  <div class="container">
+    <header>
+      <div class="blink-cursor">▶</div>
+      <h1>FOOTY<span class="accent">SCORES</span></h1>
+      <div class="subtitle">// EUROPE TOP 5 LEAGUES //</div>
+      <div class="status-bar">
+        <span id="live-dot" class="live-dot">●</span>
+        <span id="clock">--:--:--</span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span id="match-date">---</span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span class="status-label">MATCHDAY 29</span>
+      </div>
+    </header>
+
+    <nav class="league-tabs">
+      <button class="tab active" data-league="pl">
+        <span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> PREMIER LEAGUE
+      </button>
+      <button class="tab" data-league="ll">
+        <span class="flag">🇪🇸</span> LA LIGA
+      </button>
+      <button class="tab" data-league="bl">
+        <span class="flag">🇩🇪</span> BUNDESLIGA
+      </button>
+      <button class="tab" data-league="sa">
+        <span class="flag">🇮🇹</span> SERIE A
+      </button>
+      <button class="tab" data-league="l1">
+        <span class="flag">🇫🇷</span> LIGUE 1
+      </button>
+    </nav>
+
+    <main class="scores-panel" id="scores-panel">
+      <!-- Scores injected by JS -->
+    </main>
+
+    <footer>
+      <span class="footer-text">[ PRESS F5 TO REFRESH ] &nbsp;|&nbsp; DATA DELAYED 5 MIN &nbsp;|&nbsp; EST. 2025 ]</span>
+    </footer>
+  </div>
+
+  <script src="scores.js"></script>
+</body>
+</html>
