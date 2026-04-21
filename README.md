@@ -1,6 +1,6 @@
 # Footy Scores ⚽
 
-A retro-styled live football scores website that pulls real match data from the [football-data.org](https://www.football-data.org/) API.
+A retro-styled live football scores website that pulls real match data from the football-data.org API.
 
 ## Features
 - Live and recent match scores across major leagues
@@ -13,17 +13,15 @@ A retro-styled live football scores website that pulls real match data from the 
 - football-data.org API
 
 ## Getting Started
-```bash
-# Clone the repo
-git clone https://github.com/RiyanMujtaba/footy-scores
 
-# Open index.html in your browser (or use Live Server)
+```bash
+git clone https://github.com/RiyanMujtaba/footy-scores
 ```
 
-Add your football-data.org API key in the JS file where prompted.
+Open index.html in your browser or use Live Server. Add your football-data.org API key where prompted in the JS file.
 
 ## Live Demo
-[View on GitHub Pages](https://riyanmujtaba.github.io/footy-scores/)
+[riyanmujtaba.github.io](https://riyanmujtaba.github.io)
 
 ---
 Made by [Riyan Mujtaba](https://riyanmujtaba.github.io)
