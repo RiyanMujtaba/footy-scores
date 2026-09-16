@@ -85,7 +85,10 @@ function statusLabel(s) {
 }
 
 // ── Render ──────────────────────────────────────────────────────────────────
+let currentLeague = "pl";
+
 function render(leagueKey) {
+  currentLeague = leagueKey;
   const panel = document.getElementById("scores-panel");
   const data  = leagues[leagueKey];
 
@@ -117,13 +120,41 @@ function render(leagueKey) {
 }
 
 // ── Tab switching ───────────────────────────────────────────────────────────
-document.querySelectorAll(".tab").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".tab").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    render(btn.dataset.league);
-  });
+const tabs = Array.from(document.querySelectorAll(".tab"));
+
+function selectTab(btn) {
+  tabs.forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  render(btn.dataset.league);
+}
+
+tabs.forEach(btn => btn.addEventListener("click", () => selectTab(btn)));
+
+// Retro shortcut: press 1–5 to jump between leagues
+document.addEventListener("keydown", e => {
+  if (e.target.matches("input, textarea")) return;
+  const n = parseInt(e.key, 10);
+  if (n >= 1 && n <= tabs.length) selectTab(tabs[n - 1]);
 });
+
+// ── Live-minute ticker — running matches count up every minute ────────────────
+function tickLiveMinutes() {
+  let changed = false;
+  Object.values(leagues).forEach(league => {
+    league.matches.forEach(m => {
+      // Only pure running clocks like "67'" — skip HT, "45+2'", "45'", kickoff times (contain ":")
+      const match = /^(\d{1,2})'$/.exec(m.status);
+      if (!match) return;
+      let min = parseInt(match[1], 10);
+      if (min >= 90) return;              // stoppage time reached — leave it be
+      m.status = `${min + 1}'`;
+      changed = true;
+    });
+  });
+  if (changed) render(currentLeague);
+}
+
+setInterval(tickLiveMinutes, 60000);
 
 // ── Clock ───────────────────────────────────────────────────────────────────
 function updateClock() {
