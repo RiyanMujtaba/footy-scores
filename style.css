@@ -109,6 +109,14 @@ header h1 .accent { color: var(--amber); text-shadow: 0 0 8px var(--amber); }
   font-size: 14px;
 }
 
+/* No matches in play — stop the pulse, dim the dot */
+.live-dot.dim {
+  color: #444;
+  animation: none;
+}
+
+#live-count { color: var(--red); }
+
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.2; }

@@ -117,6 +117,17 @@ function render(leagueKey) {
   });
 
   panel.innerHTML = html;
+  updateLiveIndicator();
+}
+
+// ── Header live indicator — reflects real live matches across all leagues ─────
+function updateLiveIndicator() {
+  const total = Object.values(leagues).reduce((n, lg) =>
+    n + lg.matches.filter(m => /^\d/.test(m.status) || m.status === "HT").length, 0);
+  const dot = document.getElementById("live-dot");
+  const count = document.getElementById("live-count");
+  if (count) count.textContent = `${total} LIVE`;
+  if (dot) dot.classList.toggle("dim", total === 0);
 }
 
 // ── Tab switching ───────────────────────────────────────────────────────────
